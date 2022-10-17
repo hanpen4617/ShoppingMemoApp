@@ -1,6 +1,8 @@
 package com.example.shoppingmemoapp
 
 import android.os.Bundle
+import android.widget.ArrayAdapter
+import android.widget.GridView
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
@@ -8,14 +10,18 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.example.shoppingmemoapp.databinding.ActivityMainBinding
+import com.example.shoppingmemoapp.databinding.FragmentMenuBinding
+import com.example.shoppingmemoapp.ui.menu.MenuFragment
 
-class MainActivity : AppCompatActivity() {
+
+class MainActivity : AppCompatActivity(){
 
     private lateinit var binding: ActivityMainBinding
-
+    private lateinit var bindingMenu: FragmentMenuBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        bindingMenu = FragmentMenuBinding.inflate(layoutInflater)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
@@ -26,7 +32,7 @@ class MainActivity : AppCompatActivity() {
         // menu should be considered as top level destinations.
         val appBarConfiguration = AppBarConfiguration(
             setOf(
-                R.id.navigation_home, R.id.navigation_dashboard, R.id.navigation_notifications
+                R.id.navigation_menu, R.id.navigation_memo
             )
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
